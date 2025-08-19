@@ -32,12 +32,9 @@ docker build -t makemkv-test .
 - `NOTIFY_START` - Enable/disable rip start notifications (default: 1)
 - `CONTAINER_DEBUG` - Enable makemkvcon debug logging (default: 0)
 
-## Docker Hub
-Published as `st0nefish/makemkv` on Docker Hub. To push updates:
-```bash
-docker build -t st0nefish/makemkv:latest .
-docker push st0nefish/makemkv:latest
-```
+## GitHub Container Registry
+Published as `ghcr.io/st0nefish/docker-makemkv` via GitHub Actions. 
+Builds are triggered automatically on push to master branch.
 
 ## Notification Flow
 1. MakeMKV GUI writes to `/config/MakeMKV_log.txt` (debug mode auto-enabled)

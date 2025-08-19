@@ -1,6 +1,6 @@
 services:
   makemkv:
-    image: st0nefish/makemkv:latest
+    image: ghcr.io/st0nefish/docker-makemkv:latest
     container_name: makemkv
     restart: unless-stopped
     ports:

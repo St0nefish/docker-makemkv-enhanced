@@ -21,7 +21,7 @@ For core MakeMKV functionality and configuration, see the [upstream documentatio
 # docker-compose.yml
 services:
   makemkv:
-    image: st0nefish/makemkv:latest
+    image: ghcr.io/st0nefish/docker-makemkv:latest
     container_name: makemkv
     ports:
       - "5800:5800"  # Web GUI
@@ -62,10 +62,10 @@ The `apprise.yml` file should be placed in your mounted config directory (e.g., 
 
 See [upstream docs](https://github.com/jlesage/docker-makemkv#environment-variables) for all base image variables.
 
-## Docker Hub
+## Installation
 
 ```bash
-docker pull st0nefish/makemkv:latest
+docker pull ghcr.io/st0nefish/docker-makemkv:latest
 ```
 
 ## License
