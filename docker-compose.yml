@@ -1,0 +1,31 @@
+services:
+  makemkv:
+    build: .
+    image: makemkv-enhanced:latest
+    container_name: makemkv
+    restart: unless-stopped
+    ports:
+      - "5800:5800"  # Web GUI
+      - "5900:5900"  # VNC (optional)
+    environment:
+      - USER_ID=1000
+      - GROUP_ID=1000
+      - TZ=America/New_York
+      - KEEP_APP_RUNNING=1
+      - ENABLE_CJK_FONT=0
+      - INSTALL_EXTRA_PKGS=openjdk-11-jre-headless  # Java for BD-J support
+      - MAKEMKV_KEY=${MAKEMKV_KEY}  # License key from .env file
+      - DISPLAY_WIDTH=900   # Square aspect for phone/tablet viewing
+      - DISPLAY_HEIGHT=900  # Square aspect for phone/tablet viewing
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}  # Discord notifications
+      - NOTIFY_PROGRESS=0  # Set to 1 for progress updates
+    volumes:
+      - ./config:/config:rw
+      - /mnt/sata/data/video:/output:rw
+      - /dev/shm:/storage:rw  # RAM disk for temp files (faster processing)
+    devices:
+      - /dev/sr0:/dev/sr0  # Blu-ray drive
+      - /dev/sg3:/dev/sg3  # SCSI generic device
+    cap_add:
+      - SYS_RAWIO  # Required for optical drive access
+      - MKNOD
