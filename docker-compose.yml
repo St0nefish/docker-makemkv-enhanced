@@ -1,7 +1,6 @@
 services:
   makemkv:
-    build: .
-    image: makemkv-enhanced:latest
+    image: st0nefish/makemkv:latest
     container_name: makemkv
     restart: unless-stopped
     ports:
@@ -17,11 +16,10 @@ services:
       - MAKEMKV_KEY=${MAKEMKV_KEY}  # License key from .env file
       - DISPLAY_WIDTH=900   # Square aspect for phone/tablet viewing
       - DISPLAY_HEIGHT=900  # Square aspect for phone/tablet viewing
-      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}  # Discord notifications
-      - NOTIFY_PROGRESS=0  # Set to 1 for progress updates
+      - NOTIFY_START=1  # Set to 0 to disable start notifications
     volumes:
       - ./config:/config:rw
-      - /mnt/sata/data/video:/output:rw
+      - /path/to/output:/output:rw
       - /dev/shm:/storage:rw  # RAM disk for temp files (faster processing)
     devices:
       - /dev/sr0:/dev/sr0  # Blu-ray drive
